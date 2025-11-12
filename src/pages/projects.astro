@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+import H1 from "../components/h1.astro";
+import InfoLayout from "../layouts/InfoLayout.astro";
+import PlaceHolder from "../assets/placeholder.png";
+
+interface Project {
+     title: string;
+     description: string;
+     image: any;
+     link: string;
+}
+
+const projects: Project[] = [
+     {
+          title: "Projet 1",
+          description: "Hehe",
+          image: PlaceHolder,
+          link: "/projet1"
+     },
+     {
+          title: "Projet 2",
+          description: "Hehe",
+          image: PlaceHolder,
+          link: "/projet2"
+     },
+     {
+          title: "Projet 3",
+          description: "Hehe",
+          image: PlaceHolder,
+          link: "/projet3"
+     }
+];
+---
+
+<InfoLayout>
+     <div class="p-4 sm:pt-8 sm:px-12 pb-20 min-h-dvh">
+          <H1>Mes derniers projets</H1>
+          <ul class="mt-4 sm:mt-12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-16 sm:gap-8">
+               {projects.map((project) => (
+                   <li class="group">
+                        <a
+                            href={project.link}
+                            rel="noopener noreferrer"
+                            class="block transition-transform duration-300 hover:scale-105"
+                        >
+                             <div class="overflow-hidden rounded-lg shadow-lg mb-4 sm:mb-0 sm:mr-4">
+                                  <Image
+                                      src={project.image}
+                                      alt={project.title}
+                                      class="aspect-[1/1.33] object-center object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
+                                  />
+                             </div>
+                             <div class="p-1 sm:p-2">
+                                  <h2 class="text-base text-zinc-100">{project.title}</h2>
+                                  <p class="text-sm text-zinc-400 text-balance">{project.description}</p>
+                             </div>
+                        </a>
+                   </li>
+               ))}
+          </ul>
+     </div>
+</InfoLayout>
