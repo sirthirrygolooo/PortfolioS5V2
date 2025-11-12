@@ -25,7 +25,7 @@ export const categories = {
 
             const allArticles = await getCollection("articles");
             
-            if (category === "all") {
+            if (category === "tout") {
                 articles.push(...allArticles);
                 return { success: true, articles };
             }
